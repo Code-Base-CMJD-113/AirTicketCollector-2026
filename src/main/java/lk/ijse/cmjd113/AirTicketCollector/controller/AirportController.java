@@ -1,6 +1,7 @@
 package lk.ijse.cmjd113.AirTicketCollector.controller;
 
 import lk.ijse.cmjd113.AirTicketCollector.dto.AirportDTO;
+import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ public class AirportController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> saveAirport(
             @RequestBody AirportDTO airportDTO){
+        airportDTO.setAirportId(IDGenerate.airportId());
         return new ResponseEntity<>(airportDTO, HttpStatus.CREATED);
     }
 }
