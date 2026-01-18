@@ -15,8 +15,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/airports")
 public class AirportController {
-    @Autowired
-    private AirportService airportService;
+
+    private final AirportService airportService;
+
+    public AirportController(AirportService airportService) {
+        this.airportService = airportService;
+    }
+
     // Save an airport
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> saveAirport(
