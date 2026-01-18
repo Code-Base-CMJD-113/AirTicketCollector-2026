@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/airports")
 public class AirportController {
@@ -28,5 +30,17 @@ public class AirportController {
                 "SL"
         );
         return new ResponseEntity<>(airportDTO,HttpStatus.OK);
+    }
+    //Get All Airports
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AirportDTO>> getAllAirports(){
+       List<AirportDTO> allAirports = List.of(
+               new AirportDTO("APT-001", "CMB", "Bandaranaike International Airport", "Katunayake", "SL"),
+               new AirportDTO("APT-002", "HRI", "Mattala Rajapaksa International Airport", "Hambantota", "SL"),
+               new AirportDTO("APT-003", "DEL", "Indira Gandhi International Airport", "New Delhi", "IN"),
+               new AirportDTO("APT-004", "DXB", "Dubai International Airport", "Dubai", "AE"),
+               new AirportDTO("APT-005", "LHR", "Heathrow Airport", "London", "GB")
+       );
+       return new ResponseEntity<>(allAirports,HttpStatus.OK);
     }
 }
