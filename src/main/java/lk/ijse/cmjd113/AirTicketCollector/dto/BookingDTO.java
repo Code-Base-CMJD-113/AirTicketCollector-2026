@@ -16,7 +16,7 @@ public class BookingDTO implements Serializable {
     private LocalDateTime bookingDate;
     private Integer seatCount;
     private BigDecimal totalAmount;
-    private String status;
+    private BookingStatus status;
     private String flightId;
     private String userId;
 }

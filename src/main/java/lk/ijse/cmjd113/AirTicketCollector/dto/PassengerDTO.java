@@ -14,6 +14,6 @@ public class PassengerDTO implements Serializable {
     private String fullName;
     private int age;
     private String gender;
-    private int seat_number;
-    private String booking_id;
+    private int seatNumber;
+    private String bookingId;
 }

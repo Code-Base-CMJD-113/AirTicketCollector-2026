@@ -1,7 +1,8 @@
 package lk.ijse.cmjd113.AirTicketCollector.controller;
 
-import com.thanu.home.airtickter.dto.UserDTO;
-import com.thanu.home.airtickter.service.UserService;
+
+import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
+import lk.ijse.cmjd113.AirTicketCollector.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +23,6 @@ public class UserDataController {
   }
   @PostMapping
   public ResponseEntity<String> saveUser(@RequestBody UserDTO userDTO) {
-//    try {
-//      userService.saveUser(userDTO);
-//      return new ResponseEntity<>(HttpStatus.CREATED);
-//    }catch (DataSaveException e){
-//      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-//              .body(e.getMessage());
-//    }
         userService.saveUser(userDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
   }
