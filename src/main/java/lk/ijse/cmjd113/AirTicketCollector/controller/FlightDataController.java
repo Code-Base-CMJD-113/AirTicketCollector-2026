@@ -1,8 +1,7 @@
 package lk.ijse.cmjd113.AirTicketCollector.controller;
 
-
-import com.thanu.home.airtickter.dto.FlightDTO;
-import com.thanu.home.airtickter.service.FlightService;
+import lk.ijse.cmjd113.AirTicketCollector.dto.FlightDTO;
+import lk.ijse.cmjd113.AirTicketCollector.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
