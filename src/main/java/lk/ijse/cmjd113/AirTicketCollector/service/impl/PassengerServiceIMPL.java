@@ -7,12 +7,11 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
-@Primary
+@Service("ServiceOne")
 public class PassengerServiceIMPL implements PassengerService {
     @Override
     public void savePassenger(PassengerDTO passenger) {
-        System.out.println(passenger);
+        System.out.println("From Passenger ServiceIMPL: "+passenger);
     }
 
     @Override

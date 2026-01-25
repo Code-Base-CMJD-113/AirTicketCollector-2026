@@ -4,6 +4,7 @@ import lk.ijse.cmjd113.AirTicketCollector.dto.PassengerDTO;
 import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.service.PassengerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/passengers")
-@RequiredArgsConstructor
 public class PassengerController {
     private final PassengerService passengerService;
+
+    public PassengerController(@Qualifier ("ServiceTwo") PassengerService passengerService) {
+        this.passengerService = passengerService;
+    }
+
     @PostMapping
     public ResponseEntity<Void> savePassenger(@RequestBody PassengerDTO passengerDTO) {
         passengerService.savePassenger(passengerDTO);
