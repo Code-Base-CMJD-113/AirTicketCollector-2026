@@ -28,29 +28,21 @@ public class AirportServiceIMPL implements AirportService {
 
     @Override
     public AirportDTO getSelectedAirport(String airportId) {
-        return new AirportDTO(
-                airportId,
-                "CMB",
-                "Bandaranayake International Airport",
-                "Katunayaka",
-                "SL"
-        );
+        var foundAirport = airportDao.findById(airportId)
+                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+        return mapper.toAirportDTO(foundAirport);
     }
 
     @Override
     public List<AirportDTO> getAllAirports() {
-        return List.of(
-                new AirportDTO("APT-001", "CMB", "Bandaranaike International Airport", "Katunayake", "SL"),
-                new AirportDTO("APT-002", "HRI", "Mattala Rajapaksa International Airport", "Hambantota", "SL"),
-                new AirportDTO("APT-003", "DEL", "Indira Gandhi International Airport", "New Delhi", "IN"),
-                new AirportDTO("APT-004", "DXB", "Dubai International Airport", "Dubai", "AE"),
-                new AirportDTO("APT-005", "LHR", "Heathrow Airport", "London", "GB")
-        );
+        return mapper.toAirportDTOList( airportDao.findAll());
     }
 
     @Override
     public void deleteAirport(String airportId) {
-        System.out.println("Deleted Airport is: " + airportId);
+        var foundAirport = airportDao.findById(airportId)
+                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+        airportDao.delete(foundAirport);
     }
 
     @Override
