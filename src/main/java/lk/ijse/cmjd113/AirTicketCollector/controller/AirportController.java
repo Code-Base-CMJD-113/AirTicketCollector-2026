@@ -19,7 +19,8 @@ public class AirportController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AirportDTO> saveAirport(
             @RequestBody AirportDTO airportDTO){
-        return new ResponseEntity<>(airportService.saveAirport(airportDTO), HttpStatus.CREATED);
+        airportService.saveAirport(airportDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     //Get Selected Airport
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
