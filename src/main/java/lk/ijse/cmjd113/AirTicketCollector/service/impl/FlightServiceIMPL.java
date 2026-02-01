@@ -59,6 +59,6 @@ public class FlightServiceIMPL implements FlightService {
 
     @Override
     public List<FlightDTO> getAllFlights() {
-        return List.of();
+      return  mapper.toFlightDTOList(flightDao.findAll());
     }
 }
