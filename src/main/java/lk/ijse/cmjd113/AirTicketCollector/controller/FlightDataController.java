@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/flight")
+@RequestMapping("/api/v1/flights")
 @RequiredArgsConstructor
 public class FlightDataController {
 

@@ -6,4 +6,7 @@ public class IDGenerate {
     public static String airportId(){
         return "APT-"+ UUID.randomUUID();
     }
+    public static String flightId(){
+        return "FLT-"+ UUID.randomUUID();
+    }
 }
