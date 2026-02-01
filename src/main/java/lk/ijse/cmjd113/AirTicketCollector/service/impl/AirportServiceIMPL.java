@@ -47,8 +47,12 @@ public class AirportServiceIMPL implements AirportService {
 
     @Override
     public void updateAirport(String airportId, AirportDTO updatedAirport) {
-        updatedAirport.setAirportId(airportId);
-        System.out.println("Updated ID is : "+airportId);
-        System.out.println("Updated Airport is :"+updatedAirport);
+        var foundAirport = airportDao.findById(airportId)
+                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+        foundAirport.setAirportCode(updatedAirport.getAirportCode());
+        foundAirport.setCity(updatedAirport.getCity());
+        foundAirport.setCountry(updatedAirport.getCountry());
+        foundAirport.setName(updatedAirport.getName());
+
     }
 }
