@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lk.ijse.cmjd113.AirTicketCollector.dao.AirportDao;
 import lk.ijse.cmjd113.AirTicketCollector.dto.AirportDTO;
 import lk.ijse.cmjd113.AirTicketCollector.entities.AirportEntity;
+import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
 import lk.ijse.cmjd113.AirTicketCollector.service.AirportService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
 import lk.ijse.cmjd113.AirTicketCollector.util.Mapper;
@@ -29,7 +30,7 @@ public class AirportServiceIMPL implements AirportService {
     @Override
     public AirportDTO getSelectedAirport(String airportId) {
         var foundAirport = airportDao.findById(airportId)
-                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+                .orElseThrow(() -> new DataNotFoundException("Data Not Found"));
         return mapper.toAirportDTO(foundAirport);
     }
 
@@ -41,14 +42,14 @@ public class AirportServiceIMPL implements AirportService {
     @Override
     public void deleteAirport(String airportId) {
         var foundAirport = airportDao.findById(airportId)
-                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+                .orElseThrow(() -> new DataNotFoundException("Data Not Found"));
         airportDao.delete(foundAirport);
     }
 
     @Override
     public void updateAirport(String airportId, AirportDTO updatedAirport) {
         var foundAirport = airportDao.findById(airportId)
-                .orElseThrow(() -> new RuntimeException("Data Not Found"));
+                .orElseThrow(() -> new DataNotFoundException("Data Not Found"));
         foundAirport.setAirportCode(updatedAirport.getAirportCode());
         foundAirport.setCity(updatedAirport.getCity());
         foundAirport.setCountry(updatedAirport.getCountry());
