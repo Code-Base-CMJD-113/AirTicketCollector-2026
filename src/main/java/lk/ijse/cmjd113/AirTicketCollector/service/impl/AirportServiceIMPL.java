@@ -7,9 +7,8 @@ import lk.ijse.cmjd113.AirTicketCollector.entities.AirportEntity;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
 import lk.ijse.cmjd113.AirTicketCollector.service.AirportService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
-import lk.ijse.cmjd113.AirTicketCollector.util.Mapper;
+import lk.ijse.cmjd113.AirTicketCollector.util.ObjMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 @Transactional
 public class AirportServiceIMPL implements AirportService {
     private final AirportDao airportDao;
-    private final Mapper mapper;
+    private final ObjMapper mapper;
     @Override
     public void saveAirport(AirportDTO airport) {
          airport.setAirportId(IDGenerate.airportId());

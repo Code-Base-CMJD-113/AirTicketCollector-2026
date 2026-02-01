@@ -4,14 +4,12 @@ import jakarta.transaction.Transactional;
 import lk.ijse.cmjd113.AirTicketCollector.dao.AirportDao;
 import lk.ijse.cmjd113.AirTicketCollector.dao.FlightDao;
 import lk.ijse.cmjd113.AirTicketCollector.dto.FlightDTO;
-import lk.ijse.cmjd113.AirTicketCollector.entities.AirportEntity;
 import lk.ijse.cmjd113.AirTicketCollector.entities.FlightEntity;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
 import lk.ijse.cmjd113.AirTicketCollector.service.FlightService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
-import lk.ijse.cmjd113.AirTicketCollector.util.Mapper;
+import lk.ijse.cmjd113.AirTicketCollector.util.ObjMapper;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +19,7 @@ import java.util.List;
 public class FlightServiceIMPL implements FlightService {
     private final FlightDao flightDao;
     private final AirportDao airportDao;
-    private final Mapper mapper;
+    private final ObjMapper mapper;
     @Override
     public void saveFlight(FlightDTO flightDTO) {
         //Fetch Airport data

@@ -12,4 +12,8 @@ public class IDGenerate {
     public static String userId(){
         return "USR-"+ UUID.randomUUID();
     }
+
+    public static String bookingId(){
+        return "BKN-"+ UUID.randomUUID();
+    }
 }

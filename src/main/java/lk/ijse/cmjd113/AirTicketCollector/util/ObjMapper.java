@@ -1,9 +1,11 @@
 package lk.ijse.cmjd113.AirTicketCollector.util;
 
 import lk.ijse.cmjd113.AirTicketCollector.dto.AirportDTO;
+import lk.ijse.cmjd113.AirTicketCollector.dto.BookingDTO;
 import lk.ijse.cmjd113.AirTicketCollector.dto.FlightDTO;
 import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.entities.AirportEntity;
+import lk.ijse.cmjd113.AirTicketCollector.entities.BookingEntity;
 import lk.ijse.cmjd113.AirTicketCollector.entities.FlightEntity;
 import lk.ijse.cmjd113.AirTicketCollector.entities.UserEntity;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +17,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class Mapper {
+public class ObjMapper {
     private final ModelMapper modelMapper;
     //Airport
     public AirportDTO toAirportDTO(AirportEntity  airportEntity) {
@@ -49,6 +51,17 @@ public class Mapper {
     public List<UserDTO> toUserDTOList(List<UserEntity> userEntityList) {
         return modelMapper.map(userEntityList,
                 new TypeToken<List<UserDTO>>(){}.getType());
+    }
+    //Booking
+    public BookingDTO toBookingDTO(BookingEntity bookingEntity) {
+        return modelMapper.map(bookingEntity, BookingDTO.class);
+    }
+    public BookingEntity toBookingEntity(BookingDTO  bookingDTO) {
+        return modelMapper.map(bookingDTO, BookingEntity.class);
+    }
+    public List<BookingDTO> toBookingDTOList(List<BookingEntity> bookingEntitiyList) {
+        return modelMapper.map(bookingEntitiyList,
+                new TypeToken<List<BookingDTO>>(){}.getType());
     }
 
 }

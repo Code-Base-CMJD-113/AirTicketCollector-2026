@@ -3,11 +3,10 @@ package lk.ijse.cmjd113.AirTicketCollector.service.impl;
 import jakarta.transaction.Transactional;
 import lk.ijse.cmjd113.AirTicketCollector.dao.UserDao;
 import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
-import lk.ijse.cmjd113.AirTicketCollector.entities.UserEntity;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
 import lk.ijse.cmjd113.AirTicketCollector.service.UserService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
-import lk.ijse.cmjd113.AirTicketCollector.util.Mapper;
+import lk.ijse.cmjd113.AirTicketCollector.util.ObjMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceIMPL implements UserService {
     private final UserDao userDao;
-    private final Mapper mapper;
+    private final ObjMapper mapper;
     @Override
     public void saveUser(UserDTO userDTO) {
        userDTO.setUserId(IDGenerate.userId());
