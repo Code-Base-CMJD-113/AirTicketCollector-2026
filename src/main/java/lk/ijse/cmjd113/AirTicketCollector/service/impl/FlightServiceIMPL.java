@@ -44,7 +44,9 @@ public class FlightServiceIMPL implements FlightService {
 
     @Override
     public void deleteFlight(String flightId) {
-
+        flightDao.findById(flightId)
+                        .orElseThrow(() -> new DataNotFoundException("Flight Not Found"));
+     flightDao.deleteById(flightId);
     }
 
     @Override
