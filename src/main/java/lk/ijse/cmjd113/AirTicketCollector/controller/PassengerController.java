@@ -13,12 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/passengers")
+@RequiredArgsConstructor
 public class PassengerController {
     private final PassengerService passengerService;
-
-    public PassengerController(@Qualifier ("ServiceTwo") PassengerService passengerService) {
-        this.passengerService = passengerService;
-    }
 
     @PostMapping
     public ResponseEntity<Void> savePassenger(@RequestBody PassengerDTO passengerDTO) {
