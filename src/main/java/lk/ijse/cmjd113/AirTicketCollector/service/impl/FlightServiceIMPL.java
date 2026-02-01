@@ -49,7 +49,10 @@ public class FlightServiceIMPL implements FlightService {
 
     @Override
     public FlightDTO getFlight(String flightId) {
-        return null;
+        var foundFlight =
+                flightDao.findById(flightId)
+                        .orElseThrow(() -> new DataNotFoundException("Flight Not Found"));
+    return mapper.toFlightDTO(foundFlight);
     }
 
     @Override
