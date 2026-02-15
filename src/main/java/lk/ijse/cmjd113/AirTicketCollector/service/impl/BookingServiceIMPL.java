@@ -7,6 +7,7 @@ import lk.ijse.cmjd113.AirTicketCollector.dao.UserDao;
 import lk.ijse.cmjd113.AirTicketCollector.dto.BookingDTO;
 import lk.ijse.cmjd113.AirTicketCollector.entities.BookingEntity;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
+import lk.ijse.cmjd113.AirTicketCollector.exception.DataSaveException;
 import lk.ijse.cmjd113.AirTicketCollector.service.BookingService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;
 import lk.ijse.cmjd113.AirTicketCollector.util.ObjMapper;
@@ -38,8 +39,14 @@ public class BookingServiceIMPL implements BookingService {
         bookingEntity.setFlightId(foundFlight);
         bookingEntity.setUser(foundUser);
         bookingEntity.setBookingId(IDGenerate.bookingId());
-        bookingDao.save(bookingEntity);
+
         //Todo:Update seat count
+        var availableSeats = flightDao.getAvailableSeats(booking.getFlightId());
+        if(availableSeats == 0){
+            throw new DataSaveException("No available seats found");
+        }
+        bookingDao.save(bookingEntity);
+        flightDao.deductAvlSeats(booking.getSeatCount(),booking.getFlightId());
     }
 
     @Override

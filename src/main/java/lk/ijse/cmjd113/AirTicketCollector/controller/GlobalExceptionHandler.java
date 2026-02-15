@@ -2,6 +2,7 @@ package lk.ijse.cmjd113.AirTicketCollector.controller;
 
 import lk.ijse.cmjd113.AirTicketCollector.dto.ErrorResponse;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
+import lk.ijse.cmjd113.AirTicketCollector.exception.DataSaveException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,11 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorResponse> handleGeneralRuntimeException(RuntimeException ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorResponse(ex.getMessage(),INTERNAL_PROCESS_ERROR));
+    }
+    @ExceptionHandler(DataSaveException.class)
+    public ResponseEntity<ErrorResponse> handleDataSaveException(DataSaveException ex){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorResponse(ex.getMessage(),INTERNAL_PROCESS_ERROR));
     }
