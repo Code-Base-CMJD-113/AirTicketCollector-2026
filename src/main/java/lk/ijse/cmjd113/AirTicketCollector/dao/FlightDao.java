@@ -12,11 +12,14 @@ import org.springframework.stereotype.Repository;
 public interface FlightDao extends JpaRepository<FlightEntity,String> {
     @Query("SELECT f.availableSeats FROM FlightEntity f WHERE f.flightNo = :flightId")
     int getAvailableSeats(@Param("flightId") String flightId);
+
     @Modifying
     @Transactional
     @Query("UPDATE FlightEntity f SET f.availableSeats = f.availableSeats - :seatCount WHERE f.flightNo = :flightId")
     int deductAvlSeats(int seatCount,String flightId);
 
+    @Modifying
+    @Transactional
     @Query("UPDATE FlightEntity f SET f.availableSeats = f.availableSeats + :seatCount WHERE f.flightNo = :flightId")
     int addAvlSeats(int seatCount,String flightId);
 }
