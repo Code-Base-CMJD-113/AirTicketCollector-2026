@@ -60,13 +60,24 @@ public class BookingServiceIMPL implements BookingService {
         var foundUser = userDao.findById(booking.getUserId())
                 .orElseThrow(() -> new DataNotFoundException("User not found"));
 
+        //Handle seat avilabbility
+        var newSeatCount = booking.getSeatCount();
+        var prevSeatCount = foundBooking.getSeatCount();
+        var seatCountDiff = newSeatCount - prevSeatCount;
+        // 5 - 2 = 3
+        // 5 - 8 = -3
+
+        if(seatCountDiff > 0){
+            flightDao.deductAvlSeats(seatCountDiff,booking.getFlightId());
+        }else {
+            flightDao.addAvlSeats(Math.abs(seatCountDiff),booking.getFlightId());
+        }
         foundBooking.setStatus(booking.getStatus());
         foundBooking.setBookingDate(booking.getBookingDate());
         foundBooking.setSeatCount(booking.getSeatCount());
         foundBooking.setTotalAmount(booking.getTotalAmount());
         foundBooking.setFlightId(foundFlight);
         foundBooking.setUser(foundUser);
-
     }
 
     @Override
