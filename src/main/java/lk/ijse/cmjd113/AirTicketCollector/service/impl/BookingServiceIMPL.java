@@ -39,6 +39,7 @@ public class BookingServiceIMPL implements BookingService {
         bookingEntity.setUser(foundUser);
         bookingEntity.setBookingId(IDGenerate.bookingId());
         bookingDao.save(bookingEntity);
+        //Todo:Update seat count
     }
 
     @Override
