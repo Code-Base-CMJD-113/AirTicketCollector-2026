@@ -71,9 +71,10 @@ public class BookingServiceIMPL implements BookingService {
 
     @Override
     public void deleteBooking(String bookingId) {
-       bookingDao.findById(bookingId)
+        var foundBooking = bookingDao.findById(bookingId)
                 .orElseThrow(() -> new DataNotFoundException("Booking not found"));
-     bookingDao.deleteById(bookingId);
+        bookingDao.deleteById(bookingId);
+        flightDao.addAvlSeats(foundBooking.getSeatCount(),foundBooking.getFlightId().getFlightNo());
     }
 
     @Override
