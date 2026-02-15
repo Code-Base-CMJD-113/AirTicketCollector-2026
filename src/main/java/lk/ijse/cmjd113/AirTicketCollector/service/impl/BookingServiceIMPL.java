@@ -42,8 +42,8 @@ public class BookingServiceIMPL implements BookingService {
 
         //Todo:Update seat count
         var availableSeats = flightDao.getAvailableSeats(booking.getFlightId());
-        if(availableSeats == 0){
-            throw new DataSaveException("No available seats found");
+        if(availableSeats == 0 || availableSeats < booking.getSeatCount() ){
+            throw new DataSaveException("No available seats found or exceed the seat limit");
         }
         bookingDao.save(bookingEntity);
         flightDao.deductAvlSeats(booking.getSeatCount(),booking.getFlightId());
