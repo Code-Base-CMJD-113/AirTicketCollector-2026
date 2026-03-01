@@ -1,6 +1,7 @@
 package lk.ijse.cmjd113.AirTicketCollector.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Configuration
 public class CORSConfig {
+    @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterRegistrationBean() {
         var corsConfig = new CorsConfiguration();
         corsConfig.setAllowedOrigins(List.of("http://localhost:3000"));
