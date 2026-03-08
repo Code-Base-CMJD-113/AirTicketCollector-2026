@@ -7,7 +7,6 @@ import lk.ijse.cmjd113.AirTicketCollector.dto.secure.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.service.secure.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 @Service
 @Transactional
