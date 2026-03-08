@@ -5,7 +5,12 @@ import lk.ijse.cmjd113.AirTicketCollector.dto.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,7 +18,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "users")
-public class UserEntity implements Serializable {
+public class UserEntity implements Serializable, UserDetails {
    @Id
     private String userId;
     private String fullName;
@@ -25,4 +30,14 @@ public class UserEntity implements Serializable {
     private String phone;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<BookingEntity> bookings;
+
+ @Override
+ public Collection<? extends GrantedAuthority> getAuthorities() {
+  return List.of(new SimpleGrantedAuthority("ROLE_"+role.name()));
+ }
+
+ @Override
+ public String getUsername() {
+  return email;
+ }
 }
