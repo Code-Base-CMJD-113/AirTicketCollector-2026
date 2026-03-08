@@ -2,7 +2,7 @@ package lk.ijse.cmjd113.AirTicketCollector.service.impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.cmjd113.AirTicketCollector.dao.UserDao;
-import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
+import lk.ijse.cmjd113.AirTicketCollector.dto.secure.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.exception.DataNotFoundException;
 import lk.ijse.cmjd113.AirTicketCollector.service.UserService;
 import lk.ijse.cmjd113.AirTicketCollector.util.IDGenerate;

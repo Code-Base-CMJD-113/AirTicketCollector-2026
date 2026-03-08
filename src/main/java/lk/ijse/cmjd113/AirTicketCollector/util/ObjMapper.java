@@ -1,7 +1,9 @@
 package lk.ijse.cmjd113.AirTicketCollector.util;
 
 import lk.ijse.cmjd113.AirTicketCollector.dto.*;
+import lk.ijse.cmjd113.AirTicketCollector.dto.secure.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.entities.*;
+import lk.ijse.cmjd113.AirTicketCollector.entities.secure.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

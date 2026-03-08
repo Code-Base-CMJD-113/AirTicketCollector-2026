@@ -1,7 +1,7 @@
 package lk.ijse.cmjd113.AirTicketCollector.controller;
 
 
-import lk.ijse.cmjd113.AirTicketCollector.dto.UserDTO;
+import lk.ijse.cmjd113.AirTicketCollector.dto.secure.UserDTO;
 import lk.ijse.cmjd113.AirTicketCollector.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -2,13 +2,12 @@ package lk.ijse.cmjd113.AirTicketCollector.entities;
 
 import jakarta.persistence.*;
 import lk.ijse.cmjd113.AirTicketCollector.dto.BookingStatus;
+import lk.ijse.cmjd113.AirTicketCollector.entities.secure.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor

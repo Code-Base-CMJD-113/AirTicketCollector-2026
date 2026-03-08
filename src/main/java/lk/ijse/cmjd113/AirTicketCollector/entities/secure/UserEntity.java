@@ -1,7 +1,8 @@
-package lk.ijse.cmjd113.AirTicketCollector.entities;
+package lk.ijse.cmjd113.AirTicketCollector.entities.secure;
 
 import jakarta.persistence.*;
 import lk.ijse.cmjd113.AirTicketCollector.dto.Role;
+import lk.ijse.cmjd113.AirTicketCollector.entities.BookingEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
