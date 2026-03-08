@@ -1,4 +1,4 @@
-package lk.ijse.cmjd113.AirTicketCollector.service.secure.impl;
+package lk.ijse.cmjd113.AirTicketCollector.securityConfig;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
